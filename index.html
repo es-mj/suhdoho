@@ -235,7 +235,7 @@
                     <h2 class="text-xl sm:text-2xl font-bold text-stone-800 flex items-center gap-2">
                         <span>🖼️</span> 놓쳐선 안 될 주요 대표작 10선 가이드
                     </h2>
-                    <p class="text-stone-600 text-xs sm:text-sm mt-1">작품별 숨겨진 일화와 동행인과 나눌 수 있는 관람 포인트가 정리되어 있습니다.</p>
+                    <p class="text-stone-600 text-xs sm:text-sm mt-1">작품별 숨겨진 일화와 동행인과 나눌 수 있는 관람 포인트가 정리되어 있습니다. <strong>(사진을 누르면 전체화면으로 크게 볼 수 있습니다 🔍)</strong></p>
                 </div>
                 <!-- Filters -->
                 <div class="flex flex-wrap gap-1.5 bg-stone-100 p-1.5 rounded-xl border border-stone-200">
@@ -444,6 +444,23 @@
     </div>
 </footer>
 
+<!-- High-Resolution Image Lightbox Modal -->
+<div id="image-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex-col items-center justify-center p-4 transition-all duration-300" onclick="closeImageModal(event)">
+    <!-- Close Button -->
+    <button class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white text-3xl font-bold p-2 z-50 transition-colors focus:outline-none" onclick="closeImageModal(null, true)" aria-label="닫기">
+        ✕
+    </button>
+    <!-- Modal Content Box -->
+    <div class="relative max-w-4xl max-h-[88vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+        <img id="modal-img" src="" alt="작품 확대 이미지" class="max-w-full max-h-[75vh] sm:max-h-[80vh] object-contain rounded-xl shadow-2xl transition-transform duration-300">
+        <!-- Caption -->
+        <div class="mt-4 text-center px-4">
+            <p id="modal-title" class="font-bold text-sm sm:text-lg text-white tracking-wide"></p>
+            <p id="modal-tag" class="text-xs sm:text-sm text-amber-300 mt-1 font-medium"></p>
+        </div>
+    </div>
+</div>
+
 <!-- Non-intrusive Toast Notification Container (No alert() used) -->
 <div id="toast-msg" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-stone-900 text-white text-xs sm:text-sm px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 pointer-events-none border border-stone-700">
     <span id="toast-icon">✨</span>
@@ -452,7 +469,7 @@
 
 <!-- JavaScript Logic -->
 <script>
-    // Data Structure for 10 Key Works with Deep Research Details
+    // Data Structure for 10 Key Works with Deep Research Details and Updated Extensions
     const worksData = [
         {
             id: 'seed_516',
@@ -577,17 +594,55 @@
         "👥 〈Who Am We?〉 벽지 앞에서 '나(Am)'와 '우리(We)' 사이에서 갈등했던 학교나 직장에서의 기억이 떠오르셨나요?"
     ];
 
-    // Render Works Cards with Visual Artwork Image Headers
+    // Open High-Resolution Image Modal
+    function openImageModal(imgSrc, title, tag) {
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalTag = document.getElementById('modal-tag');
+
+        modalImg.src = imgSrc;
+        modalTitle.textContent = title;
+        modalTag.textContent = tag ? `🏷️ ${tag}` : '';
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+    }
+
+    // Close High-Resolution Image Modal
+    function closeImageModal(e, forceClose = false) {
+        if (forceClose || (e && e.target.id === 'image-modal')) {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = ''; // 스크롤 복원
+        }
+    }
+
+    // ESC Key to Close Modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeImageModal(null, true);
+        }
+    });
+
+    // Render Works Cards with Click-to-Zoom Headers
     function renderWorks(items) {
         const grid = document.getElementById('works-grid');
         grid.innerHTML = '';
         items.forEach(item => {
+            const safeTitle = item.title.replace(/'/g, "\\'");
+            const safeTag = item.imageTag.replace(/'/g, "\\'");
+
             const card = document.createElement('div');
             card.className = "bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all duration-200";
             card.innerHTML = `
                 <div>
-                    <!-- Visual Artwork Image Header -->
-                    <div class="relative w-full h-52 bg-stone-300 overflow-hidden group">
+                    <!-- Clickable Visual Artwork Image Header -->
+                    <div class="relative w-full h-52 bg-stone-300 overflow-hidden group cursor-zoom-in" 
+                         onclick="openImageModal('${item.image}', '${safeTitle}', '${safeTag}')"
+                         title="클릭하면 원본 크기로 볼 수 있습니다">
                         <img id="img-${item.id}" src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'; const fb = this.nextElementSibling; if(fb){ fb.classList.remove('hidden'); fb.classList.add('flex'); }">
                         <div class="hidden w-full h-full absolute inset-0 items-center justify-center bg-stone-200 text-stone-600 text-xs font-semibold p-4 text-center">
                             🎨 ${item.title} 작품 대표 이미지
@@ -598,6 +653,11 @@
                             <span class="bg-stone-900/80 text-white text-[11px] px-2.5 py-1 rounded-md backdrop-blur-sm font-medium">
                                 ${item.imageTag}
                             </span>
+                        </div>
+
+                        <!-- Zoom Hint Badge in top right -->
+                        <div class="absolute top-3 right-3 bg-stone-900/70 hover:bg-stone-900 text-white text-[11px] px-2 py-1 rounded-md backdrop-blur-sm font-medium flex items-center gap-1 z-10 transition-colors">
+                            <span>🔍 크게 보기</span>
                         </div>
 
                         <!-- Location Tag in bottom right -->
