@@ -77,8 +77,8 @@
 </header>
 
 <!-- Main Navigation Bar -->
-<nav class="sticky top-0 z-40 bg-stone-100/95 backdrop-blur-md border-b border-stone-300 shadow-sm w-full">
-    <div class="max-w-5xl mx-auto flex overflow-x-auto scroll-smooth custom-scrollbar px-2 py-2 gap-1.5 sm:gap-2 text-xs sm:text-sm">
+<nav id="main-nav" class="sticky top-0 z-40 bg-stone-100/95 backdrop-blur-md border-b border-stone-300 shadow-sm w-full">
+    <div id="nav-container" class="max-w-5xl mx-auto flex overflow-x-auto scroll-smooth custom-scrollbar px-2 py-2 gap-1.5 sm:gap-2 text-xs sm:text-sm">
         <button onclick="switchTab('theme')" id="tab-theme" class="tab-btn active shrink-0 px-3.5 py-2 rounded-lg whitespace-nowrap transition-all">1. 기획의도 & 테마</button>
         <button onclick="switchTab('story')" id="tab-story" class="tab-btn shrink-0 px-3.5 py-2 rounded-lg whitespace-nowrap transition-all">2. 작가 이야기 & 4대 철학</button>
         <button onclick="switchTab('works')" id="tab-works" class="tab-btn shrink-0 px-3.5 py-2 rounded-lg whitespace-nowrap transition-all">3. 대표작 10선 가이드 🖼️</button>
@@ -92,8 +92,9 @@
     <!-- TAB 1: Exhibition Overview & Key Theme -->
     <section id="content-theme" class="space-y-5 sm:space-y-8 w-full">
         <div class="bg-white p-4 sm:p-7 md:p-8 rounded-2xl shadow-sm border border-stone-200 w-full">
-            <h2 class="text-lg sm:text-2xl font-bold text-stone-800 mb-4 flex items-center gap-2">
-                <span>🏛️</span> 왜 이 전시가 특별할까? 기획의도와 핵심 테마
+            <h2 class="text-lg sm:text-2xl font-bold text-stone-800 mb-4 flex items-start gap-2 leading-snug">
+                <span class="shrink-0 mt-0.5">🏛️</span>
+                <span>왜 이 전시가 특별할까?<br class="sm:hidden"> 기획의도와 핵심 테마</span>
             </h2>
             
             <!-- Contrast Card -->
@@ -439,14 +440,6 @@
 
 </main>
 
-<!-- Footer -->
-<!--<footer class="bg-stone-200 border-t border-stone-300 py-6 text-center text-xs text-stone-600">
-    <div class="max-w-5xl mx-auto px-4 space-y-1">
-        <p class="font-semibold text-stone-700">국립현대미술관 서울 《서도호》 개인전 관람 가이드 (2026.08.27~2027.02.09)</p>
-        <p>기억의 건축학 · 포터블 아키텍처 · 박보검 오디오 가이드 · 일반 관람객용 쉬운 해설집</p>
-    </div>
-</footer>-->
-
 <!-- High-Resolution Image Lightbox Modal -->
 <div id="image-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex-col items-center justify-center p-4 transition-all duration-300" onclick="closeImageModal(event)">
     <!-- Close Button -->
@@ -711,12 +704,28 @@
             if (contentEl) contentEl.classList.add('hidden');
             if (tabBtn) tabBtn.classList.remove('active');
         });
+        
         const targetContent = document.getElementById(`content-${tabId}`);
         const targetBtn = document.getElementById(`tab-${tabId}`);
         if (targetContent) targetContent.classList.remove('hidden');
         if (targetBtn) {
             targetBtn.classList.add('active');
-            targetBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            
+            // 가로 내비게이션 바 내부에서만 버튼을 중앙으로 이동 (세로 화면 스크롤 간섭 방지)
+            const navContainer = document.getElementById('nav-container');
+            if (navContainer) {
+                const scrollLeft = targetBtn.offsetLeft - (navContainer.clientWidth / 2) + (targetBtn.clientWidth / 2);
+                navContainer.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            }
+        }
+
+        // 탭 변경 시 전체 페이지 스크롤을 항상 콘텐츠 상단(내비게이션 바 바로 밑)으로 자연스럽게 리셋
+        const navEl = document.getElementById('main-nav');
+        if (navEl) {
+            const navBottom = navEl.offsetTop;
+            if (window.scrollY > navBottom) {
+                window.scrollTo({ top: navBottom, behavior: 'smooth' });
+            }
         }
     }
 
