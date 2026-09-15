@@ -18,20 +18,24 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 550px;
+            max-width: 480px;
             margin-left: auto;
             margin-right: auto;
-            height: 320px;
-            max-height: 380px;
+            height: 260px;
+        }
+        @media (min-width: 480px) {
+            .chart-container {
+                height: 300px;
+            }
         }
         @media (min-width: 768px) {
             .chart-container {
-                height: 350px;
+                height: 340px;
             }
         }
         .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 4px;
+            height: 4px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #F1EFF5;
@@ -47,22 +51,22 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col overflow-x-hidden w-full">
 
 <!-- Header & Hero Section -->
-<header class="bg-stone-900 text-stone-100 py-8 px-4 sm:px-8 border-b border-stone-800 shadow-md">
-    <div class="max-w-5xl mx-auto">
-        <div class="flex flex-wrap items-center justify-between gap-4">
+<header class="bg-stone-900 text-stone-100 py-6 sm:py-8 px-3.5 sm:px-8 border-b border-stone-800 shadow-md w-full">
+    <div class="max-w-5xl mx-auto w-full">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-                <div class="flex flex-wrap items-center gap-2 mb-2">
-                    <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold tracking-wide uppercase">MMCA 서울 13년 만의 대규모 개인전</span>
-                    <span class="inline-block bg-emerald-700 text-white text-xs px-2.5 py-1 rounded-full font-semibold">출품작 500여 점</span>
-                    <span class="inline-block bg-stone-700 text-stone-300 text-xs px-2.5 py-1 rounded-full font-semibold">도쿄·홍콩 순회 예정</span>
+                <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-2">
+                    <span class="inline-block bg-amber-600 text-white text-[11px] sm:text-xs px-2.5 py-0.5 sm:py-1 rounded-full font-semibold tracking-wide uppercase">MMCA 서울 13년 만의 대규모 개인전</span>
+                    <span class="inline-block bg-emerald-700 text-white text-[11px] sm:text-xs px-2.5 py-0.5 sm:py-1 rounded-full font-semibold">출품작 500여 점</span>
+                    <span class="inline-block bg-stone-700 text-stone-300 text-[11px] sm:text-xs px-2.5 py-0.5 sm:py-1 rounded-full font-semibold">도쿄·홍콩 순회 예정</span>
                 </div>
-                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">서도호 개인전 《서도호》 관람 가이드</h1>
-                <p class="text-stone-300 text-sm sm:text-base">"부동산이 아닌, 내 몸에 스민 기억으로서의 집을 걷다"</p>
+                <h1 class="text-xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-1.5 sm:mb-2 leading-tight">서도호 개인전 《서도호》 관람 가이드</h1>
+                <p class="text-stone-300 text-xs sm:text-base leading-relaxed">"부동산이 아닌, 내 몸에 스민 기억으로서의 집을 걷다"</p>
             </div>
-            <div class="bg-stone-800 border border-stone-700 p-4 rounded-xl text-xs sm:text-sm space-y-1.5 w-full sm:w-auto">
+            <div class="bg-stone-800/90 border border-stone-700 p-3.5 sm:p-4 rounded-xl text-xs sm:text-sm space-y-1.5 w-full md:w-auto shrink-0">
                 <p class="text-amber-400 font-semibold">🗓️ 전시 기간: 2026. 08. 27 ~ 2027. 02. 09 (167일간)</p>
                 <p class="text-stone-300">📍 장소: 국립현대미술관 서울 (B1 시드뱅크 ~ 2F 스튜디오)</p>
                 <p class="text-stone-300">⏱️ 추천 관람시간: 최소 1시간 30분 ~ 2시간 (볼거리 풍성!)</p>
@@ -73,38 +77,38 @@
 </header>
 
 <!-- Main Navigation Bar -->
-<nav class="sticky top-0 z-40 bg-stone-100/95 backdrop-blur-md border-b border-stone-300 shadow-sm">
-    <div class="max-w-5xl mx-auto flex overflow-x-auto custom-scrollbar p-2 gap-2 text-sm">
-        <button onclick="switchTab('theme')" id="tab-theme" class="tab-btn active px-4 py-2 rounded-lg whitespace-nowrap transition-all">1. 기획의도 & 테마</button>
-        <button onclick="switchTab('story')" id="tab-story" class="tab-btn px-4 py-2 rounded-lg whitespace-nowrap transition-all">2. 작가 이야기 & 4대 철학</button>
-        <button onclick="switchTab('works')" id="tab-works" class="tab-btn px-4 py-2 rounded-lg whitespace-nowrap transition-all">3. 대표작 10선 가이드 🖼️</button>
-        <button onclick="switchTab('route')" id="tab-route" class="tab-btn px-4 py-2 rounded-lg whitespace-nowrap transition-all">4. 6단계 관람 동선 & 관람법</button>
-        <button onclick="switchTab('tips')" id="tab-tips" class="tab-btn px-4 py-2 rounded-lg whitespace-nowrap transition-all">5. 4대 대화 주제 & 룰렛 카드</button>
+<nav class="sticky top-0 z-40 bg-stone-100/95 backdrop-blur-md border-b border-stone-300 shadow-sm w-full">
+    <div class="max-w-5xl mx-auto flex overflow-x-auto scroll-smooth custom-scrollbar px-2 py-2 gap-1.5 sm:gap-2 text-xs sm:text-sm">
+        <button onclick="switchTab('theme')" id="tab-theme" class="tab-btn active shrink-0 px-3.5 py-2 rounded-lg whitespace-nowrap transition-all">1. 기획의도 & 테마</button>
+        <button onclick="switchTab('story')" id="tab-story" class="tab-btn shrink-0 px-3.5 py-2 rounded-lg whitespace-nowrap transition-all">2. 작가 이야기 & 4대 철학</button>
+        <button onclick="switchTab('works')" id="tab-works" class="tab-btn shrink-0 px-3.5 py-2 rounded-lg whitespace-nowrap transition-all">3. 대표작 10선 가이드 🖼️</button>
+        <button onclick="switchTab('route')" id="tab-route" class="tab-btn shrink-0 px-3.5 py-2 rounded-lg whitespace-nowrap transition-all">4. 6단계 관람 동선 & 관람법</button>
+        <button onclick="switchTab('tips')" id="tab-tips" class="tab-btn shrink-0 px-3.5 py-2 rounded-lg whitespace-nowrap transition-all">5. 4대 대화 주제 & 룰렛 카드</button>
     </div>
 </nav>
 
 <!-- Main Content Body -->
-<main class="max-w-5xl mx-auto px-4 py-8 flex-grow">
+<main class="w-full max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-8 flex-grow">
 
     <!-- TAB 1: Exhibition Overview & Key Theme -->
-    <section id="content-theme" class="space-y-8">
-        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200">
-            <h2 class="text-xl sm:text-2xl font-bold text-stone-800 mb-4 flex items-center gap-2">
+    <section id="content-theme" class="space-y-5 sm:space-y-8 w-full">
+        <div class="bg-white p-4 sm:p-7 md:p-8 rounded-2xl shadow-sm border border-stone-200 w-full">
+            <h2 class="text-lg sm:text-2xl font-bold text-stone-800 mb-4 flex items-center gap-2">
                 <span>🏛️</span> 왜 이 전시가 특별할까? 기획의도와 핵심 테마
             </h2>
             
             <!-- Contrast Card -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div class="p-4 rounded-xl border border-stone-200 bg-stone-50">
-                    <span class="text-xs font-bold text-stone-500 uppercase tracking-wider block mb-1">우리가 흔히 생각하는 집</span>
-                    <h3 class="text-base font-bold text-stone-800 mb-2">🏢 "평당 얼마짜리 아파트인가?" (부동산 & 자본)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 mb-5 sm:mb-6">
+                <div class="p-3.5 sm:p-4 rounded-xl border border-stone-200 bg-stone-50">
+                    <span class="text-[11px] sm:text-xs font-bold text-stone-500 uppercase tracking-wider block mb-1">우리가 흔히 생각하는 집</span>
+                    <h3 class="text-sm sm:text-base font-bold text-stone-800 mb-1.5">🏢 "평당 얼마짜리 아파트인가?" (부동산 & 자본)</h3>
                     <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
                         땅 위에 단단한 콘크리트로 굳어 있고, 사고파는 '재산'으로 여겨집니다. 이사할 땐 남겨두고 떠나야만 하는 무거운 공간입니다.
                     </p>
                 </div>
-                <div class="p-4 rounded-xl border-2 border-amber-500/40 bg-amber-50/70">
-                    <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">서도호가 질문하는 집</span>
-                    <h3 class="text-base font-bold text-amber-900 mb-2">🧳 "접어서 가방에 넣고 다니는 기억의 그릇"</h3>
+                <div class="p-3.5 sm:p-4 rounded-xl border-2 border-amber-500/40 bg-amber-50/70">
+                    <span class="text-[11px] sm:text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">서도호가 질문하는 집</span>
+                    <h3 class="text-sm sm:text-base font-bold text-amber-900 mb-1.5">🧳 "접어서 가방에 넣고 다니는 기억의 그릇"</h3>
                     <p class="text-xs sm:text-sm text-stone-700 leading-relaxed">
                         얇고 투명한 천으로 지어져 어디든 들고 다닐 수 있습니다. 스위치를 켜던 손때, 문손잡이의 온기처럼 <strong>내 몸에 새겨진 추억이 곧 진짜 집</strong>입니다.
                     </p>
@@ -112,8 +116,8 @@
             </div>
 
             <!-- Buddhist Concept: 회향 -->
-            <div class="bg-stone-50 border-l-4 border-emerald-600 p-5 rounded-r-xl mb-6">
-                <h3 class="font-bold text-stone-800 text-sm sm:text-base flex items-center gap-2 mb-1">
+            <div class="bg-stone-50 border-l-4 border-emerald-600 p-3.5 sm:p-5 rounded-r-xl mb-5 sm:mb-6">
+                <h3 class="font-bold text-stone-800 text-xs sm:text-base flex items-center gap-1.5 mb-1.5">
                     <span>🌱</span> 작가가 밝힌 이번 전시의 키워드: <strong>'회향(回向)'</strong>
                 </h3>
                 <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
@@ -122,33 +126,33 @@
             </div>
 
             <!-- 3 Core Pillars -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <div class="bg-stone-50 border border-stone-200 p-5 rounded-xl">
-                    <div class="text-2xl mb-2">🧳</div>
-                    <h3 class="font-bold text-stone-800 mb-1">1. 휴대하는 건축 (Portable)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <div class="bg-stone-50 border border-stone-200 p-3.5 sm:p-5 rounded-xl">
+                    <div class="text-xl sm:text-2xl mb-1.5">🧳</div>
+                    <h3 class="font-bold text-stone-800 text-sm sm:text-base mb-1">1. 휴대하는 건축 (Portable)</h3>
                     <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">낯선 이국땅에서 느낀 지독한 외로움에서 시작되어, 얇고 가벼운 천으로 어디로든 가져갈 수 있게 만든 반투명 집입니다.</p>
                 </div>
-                <div class="bg-stone-50 border border-stone-200 p-5 rounded-xl">
-                    <div class="text-2xl mb-2">✏️</div>
-                    <h3 class="font-bold text-stone-800 mb-1">2. 피부와 손때의 애도 (Rubbing)</h3>
+                <div class="bg-stone-50 border border-stone-200 p-3.5 sm:p-5 rounded-xl">
+                    <div class="text-xl sm:text-2xl mb-1.5">✏️</div>
+                    <h3 class="font-bold text-stone-800 text-sm sm:text-base mb-1">2. 피부와 손때의 애도 (Rubbing)</h3>
                     <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">한지를 옛집 벽면에 대고 연필로 수만 번 문질러, 손때와 나뭇결의 온기를 허물 벗겨내듯 채집한 촉각적 사랑의 기록입니다.</p>
                 </div>
-                <div class="bg-stone-50 border border-stone-200 p-5 rounded-xl">
-                    <div class="text-2xl mb-2">🧥</div>
-                    <h3 class="font-bold text-stone-800 mb-1">3. 가족의 포옹으로의 귀환 (Family)</h3>
+                <div class="bg-stone-50 border border-stone-200 p-3.5 sm:p-5 rounded-xl">
+                    <div class="text-xl sm:text-2xl mb-1.5">🧥</div>
+                    <h3 class="font-bold text-stone-800 text-sm sm:text-base mb-1">3. 가족의 포옹으로의 귀환 (Family)</h3>
                     <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">거대한 도시와 아파트를 짓던 작가가 마침내 부모와 두 딸의 옷 주머니를 덧댄 '코트'로 돌아와 가족의 체온을 노래합니다.</p>
                 </div>
             </div>
 
             <!-- Radar Chart Container -->
-            <div class="bg-amber-50/60 border border-amber-200 p-6 rounded-xl">
-                <h3 class="text-base font-bold text-amber-900 mb-2 flex items-center gap-2">
+            <div class="bg-amber-50/60 border border-amber-200 p-3.5 sm:p-6 rounded-xl w-full">
+                <h3 class="text-sm sm:text-base font-bold text-amber-900 mb-1.5 flex items-center gap-1.5">
                     <span>💡</span> 서도호 예술 세계를 이루는 5가지 핵심 지표
                 </h3>
-                <p class="text-xs sm:text-sm text-amber-800 mb-4">
+                <p class="text-xs sm:text-sm text-amber-800 mb-3 sm:mb-4 leading-relaxed">
                     전시를 감상하실 때 아래 다섯 가지 테마가 작품 곳곳에 어떻게 배어 있는지 관찰해 보세요.
                 </p>
-                <div class="chart-container">
+                <div class="chart-container w-full">
                     <canvas id="themeRadarChart"></canvas>
                 </div>
             </div>
@@ -714,11 +718,18 @@
     function switchTab(tabId) {
         const tabs = ['theme', 'story', 'works', 'route', 'tips'];
         tabs.forEach(t => {
-            document.getElementById(`content-${t}`).classList.add('hidden');
-            document.getElementById(`tab-${t}`).classList.remove('active');
+            const contentEl = document.getElementById(`content-${t}`);
+            const tabBtn = document.getElementById(`tab-${t}`);
+            if (contentEl) contentEl.classList.add('hidden');
+            if (tabBtn) tabBtn.classList.remove('active');
         });
-        document.getElementById(`content-${tabId}`).classList.remove('hidden');
-        document.getElementById(`tab-${tabId}`).classList.add('active');
+        const targetContent = document.getElementById(`content-${tabId}`);
+        const targetBtn = document.getElementById(`tab-${tabId}`);
+        if (targetContent) targetContent.classList.remove('hidden');
+        if (targetBtn) {
+            targetBtn.classList.add('active');
+            targetBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
     }
 
     // Random Question Generator
@@ -734,11 +745,21 @@
 
     // Initialize Chart.js Radar Chart
     function initRadarChart() {
-        const ctx = document.getElementById('themeRadarChart').getContext('2d');
+        const canvas = document.getElementById('themeRadarChart');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const isMobile = window.innerWidth < 640;
+
         new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: ['휴대 가능한 건축 (이동성)', '시간과 장소의 촉각적 애도', '전이 공간 (문·복도·계단)', '사회적 연대와 주체성', '가족의 온기 (부성애·회향)'],
+                labels: [
+                    ['휴대 가능한 건축', '(이동성)'],
+                    ['시간과 장소의', '촉각적 애도'],
+                    ['전이 공간', '(문·복도·계단)'],
+                    ['사회적 연대와', '주체성'],
+                    ['가족의 온기', '(부성애·회향)']
+                ],
                 datasets: [{
                     label: '서도호 예술 세계 핵심 지표',
                     data: [98, 92, 95, 88, 96],
@@ -754,13 +775,26 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        top: 6,
+                        bottom: 6,
+                        left: 4,
+                        right: 4
+                    }
+                },
                 scales: {
                     r: {
                         angleLines: { color: '#E2E8F0' },
                         grid: { color: '#E2E8F0' },
                         pointLabels: {
-                            font: { size: 12, family: 'Pretendard' },
-                            color: '#475569'
+                            font: {
+                                size: isMobile ? 10.5 : 12,
+                                family: 'Pretendard',
+                                weight: '500'
+                            },
+                            color: '#334155',
+                            padding: isMobile ? 4 : 8
                         },
                         ticks: { display: false, max: 100 }
                     }
