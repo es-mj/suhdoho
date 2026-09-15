@@ -92,9 +92,9 @@
     <!-- TAB 1: Exhibition Overview & Key Theme -->
     <section id="content-theme" class="space-y-5 sm:space-y-8 w-full">
         <div class="bg-white p-4 sm:p-7 md:p-8 rounded-2xl shadow-sm border border-stone-200 w-full">
-            <h2 class="text-lg sm:text-2xl font-bold text-stone-800 mb-4 flex items-start gap-2 leading-snug">
-                <span class="shrink-0 mt-0.5">🏛️</span>
-                <span>왜 이 전시가 특별할까?<br class="sm:hidden"> 기획의도와 핵심 테마</span>
+            <h2 class="text-lg sm:text-2xl font-bold text-stone-800 mb-4 flex items-center gap-2 leading-snug">
+                <span>🏛️</span>
+                <span>왜 이 전시가 특별할까? 기획의도와 핵심 테마</span>
             </h2>
             
             <!-- Contrast Card -->
@@ -711,7 +711,7 @@
         if (targetBtn) {
             targetBtn.classList.add('active');
             
-            // 가로 내비게이션 바 내부에서만 버튼을 중앙으로 이동 (세로 화면 스크롤 간섭 방지)
+            // 가로 내비게이션 바 내부에서만 활성 버튼을 부드럽게 중앙 배치
             const navContainer = document.getElementById('nav-container');
             if (navContainer) {
                 const scrollLeft = targetBtn.offsetLeft - (navContainer.clientWidth / 2) + (targetBtn.clientWidth / 2);
@@ -719,14 +719,8 @@
             }
         }
 
-        // 탭 변경 시 전체 페이지 스크롤을 항상 콘텐츠 상단(내비게이션 바 바로 밑)으로 자연스럽게 리셋
-        const navEl = document.getElementById('main-nav');
-        if (navEl) {
-            const navBottom = navEl.offsetTop;
-            if (window.scrollY > navBottom) {
-                window.scrollTo({ top: navBottom, behavior: 'smooth' });
-            }
-        }
+        // 어떤 위치에서 탭을 누르든 화면 맨 위(또는 헤더 바로 아래)로 즉각 리셋하여 상단부터 노출
+        window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
     // Initialize Chart.js Radar Chart
