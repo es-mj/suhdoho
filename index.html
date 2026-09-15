@@ -361,16 +361,34 @@
                 </div>
 
                 <!-- Special Season Step: Seoul Box -->
-                <div class="border-2 border-dashed border-stone-400 rounded-xl p-4 sm:p-5 bg-stone-100/80 flex flex-col md:flex-row gap-4 items-start">
-                    <div class="bg-stone-600 text-white font-bold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap">12/18 이후 스페셜</div>
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-center mb-1">
-                            <h3 class="font-bold text-stone-800 text-base">지하 1층 서울박스: LACMA 소장 〈뉴욕 아파트 복도와 계단〉</h3>
-                            <span class="text-xs text-stone-600 bg-stone-200 px-2 py-0.5 rounded font-medium">수직 천 건축</span>
+                <div class="border-2 border-dashed border-stone-400 rounded-xl p-4 sm:p-5 bg-stone-100/90 flex flex-col gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 items-start">
+                        <div class="bg-stone-700 text-white font-bold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap">12/18 이후 스페셜</div>
+                        <div class="flex-grow">
+                            <div class="flex flex-wrap justify-between items-center gap-1 mb-1">
+                                <h3 class="font-bold text-stone-800 text-base">지하 1층 서울박스: LACMA 소장 〈뉴욕 아파트 복도와 계단〉</h3>
+                                <span class="text-xs text-stone-600 bg-stone-200 px-2 py-0.5 rounded font-medium">수직 천 건축</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                                2026년 12월 18일부터 결합 설치되는 미국 LA카운티미술관(LACMA) 소장 명작! 붉은색 반투명 천으로 3층 높이의 계단과 복도를 허공에 매달아놓은 장관을 감상할 수 있습니다.
+                            </p>
                         </div>
-                        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                            2026년 12월 18일부터 결합 설치되는 미국 LA카운티미술관(LACMA) 소장 명작! 붉은색 반투명 천으로 3층 높이의 계단과 복도를 허공에 매달아놓은 장관을 감상할 수 있습니다.
-                        </p>
+                    </div>
+
+                    <!-- Clickable Special Artwork Image -->
+                    <div class="relative w-full h-52 sm:h-64 bg-stone-200 rounded-xl overflow-hidden group cursor-zoom-in border border-stone-300 shadow-inner"
+                         onclick="openImageModal('./images/special.png', '〈뉴욕 아파트 복도와 계단〉 (LACMA 소장)', '12/18 서울박스 특별 전시작')"
+                         title="클릭하면 원본 크기로 볼 수 있습니다">
+                        <img src="./images/special.png" alt="서울박스 스페셜 작품 - 뉴욕 아파트 복도와 계단" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'; const fb = this.nextElementSibling; if(fb){ fb.classList.remove('hidden'); fb.classList.add('flex'); }">
+                        <div class="hidden w-full h-full absolute inset-0 items-center justify-center bg-stone-200 text-stone-600 text-xs font-semibold p-4 text-center">
+                            🏛️ images/special.png 파일이 준비되면 여기에 작품 사진이 표시됩니다.
+                        </div>
+                        <div class="absolute top-2.5 left-2.5 bg-stone-900/80 text-white text-[11px] px-2.5 py-1 rounded-md backdrop-blur-sm font-medium z-10">
+                            서울박스 수직 천 설치작
+                        </div>
+                        <div class="absolute top-2.5 right-2.5 bg-stone-900/70 hover:bg-stone-900 text-white text-[11px] px-2 py-1 rounded-md backdrop-blur-sm font-medium flex items-center gap-1 z-10 transition-colors">
+                            <span>🔍 크게 보기</span>
+                        </div>
                     </div>
                 </div>
             </div>
