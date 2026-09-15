@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>국립현대미술관 서도호전 완전 정복 가이드</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: #FAF8F5;
+            color: #2D3748;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 380px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1EFF5;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        .tab-btn.active {
+            background-color: #6B8E23;
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<!-- Header & Hero Section -->
+<header class="bg-stone-900 text-stone-100 py-8 px-4 sm:px-8 border-b border-stone-800 shadow-md">
+    <div class="max-w-5xl mx-auto">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold tracking-wide uppercase">MMCA 서울 13년 만의 대규모 개인전</span>
+                    <span class="inline-block bg-emerald-700 text-white text-xs px-2.5 py-1 rounded-full font-semibold">출품작 500여 점</span>
+                    <span class="inline-block bg-stone-700 text-stone-300 text-xs px-2.5 py-1 rounded-full font-semibold">도쿄·홍콩 순회 예정</span>
+                </div>
+                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">서도호 개인전 《서도호》 관람 가이드</h1>
+                <p class="text-stone-300 text-sm sm:text-base">"부동산이 아닌, 내 몸에 스민 기억으로서의 집을 걷다"</p>
+            </div>
+            <div class="bg-stone-800 border border-stone-700 p-4 rounded-xl text-xs sm:text-sm space-y-1.5 w-full sm:w-auto">
+                <p class="text-amber-400 font-semibold">🗓️ 전시 기간: 2026. 08. 27 ~ 2027. 02. 09 (167일간)</p>
+                <p class="text-stone-300">📍 장소: 국립현대미술관 서울 (B1 시드뱅크 ~ 2F 스튜디오)</p>
+                <p class="text-stone-300">⏱️ 추천 관람시간: 최소 1시간 30분 ~ 2시간 (볼거리 풍성!)</p>
+                <p class="text-amber-300 font-medium">🎧 무료 가이드: 박보검 배우 내레이션 (MMCA 앱 필수)</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Navigation Bar -->
+<nav class="sticky top-0 z-40 bg-stone-100/95 backdrop-blur-md border-b border-stone-300 shadow-sm">
+    <div class="max-w-5xl mx-auto flex overflow-x-auto custom-scrollbar p-2 gap-2 text-sm">
+        <button onclick="switchTab('theme')" id="tab-theme" class="tab-btn active px-4 py-2 rounded-lg whitespace-nowrap transition-all">1. 기획의도 & 테마</button>
+        <button onclick="switchTab('story')" id="tab-story" class="tab-btn px-4 py-2 rounded-lg whitespace-nowrap transition-all">2. 작가 이야기 & 4대 철학</button>
+        <button onclick="switchTab('works')" id="tab-works" class="tab-btn px-4 py-2 rounded-lg whitespace-nowrap transition-all">3. 대표작 10선 가이드 🖼️</button>
+        <button onclick="switchTab('route')" id="tab-route" class="tab-btn px-4 py-2 rounded-lg whitespace-nowrap transition-all">4. 6단계 관람 동선 & 관람법</button>
+        <button onclick="switchTab('tips')" id="tab-tips" class="tab-btn px-4 py-2 rounded-lg whitespace-nowrap transition-all">5. 4대 대화 주제 & 룰렛 카드</button>
+    </div>
+</nav>
+
+<!-- Main Content Body -->
+<main class="max-w-5xl mx-auto px-4 py-8 flex-grow">
+
+    <!-- TAB 1: Exhibition Overview & Key Theme -->
+    <section id="content-theme" class="space-y-8">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200">
+            <h2 class="text-xl sm:text-2xl font-bold text-stone-800 mb-4 flex items-center gap-2">
+                <span>🏛️</span> 왜 이 전시가 특별할까? 기획의도와 핵심 테마
+            </h2>
+            
+            <!-- Contrast Card -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="p-4 rounded-xl border border-stone-200 bg-stone-50">
+                    <span class="text-xs font-bold text-stone-500 uppercase tracking-wider block mb-1">우리가 흔히 생각하는 집</span>
+                    <h3 class="text-base font-bold text-stone-800 mb-2">🏢 "평당 얼마짜리 아파트인가?" (부동산 & 자본)</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                        땅 위에 단단한 콘크리트로 굳어 있고, 사고파는 '재산'으로 여겨집니다. 이사할 땐 남겨두고 떠나야만 하는 무거운 공간입니다.
+                    </p>
+                </div>
+                <div class="p-4 rounded-xl border-2 border-amber-500/40 bg-amber-50/70">
+                    <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block mb-1">서도호가 질문하는 집</span>
+                    <h3 class="text-base font-bold text-amber-900 mb-2">🧳 "접어서 가방에 넣고 다니는 기억의 그릇"</h3>
+                    <p class="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                        얇고 투명한 천으로 지어져 어디든 들고 다닐 수 있습니다. 스위치를 켜던 손때, 문손잡이의 온기처럼 <strong>내 몸에 새겨진 추억이 곧 진짜 집</strong>입니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Buddhist Concept: 회향 -->
+            <div class="bg-stone-50 border-l-4 border-emerald-600 p-5 rounded-r-xl mb-6">
+                <h3 class="font-bold text-stone-800 text-sm sm:text-base flex items-center gap-2 mb-1">
+                    <span>🌱</span> 작가가 밝힌 이번 전시의 키워드: <strong>'회향(回向)'</strong>
+                </h3>
+                <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                    불교에서 '회향'이란 자신이 닦은 공덕을 혼자 갖지 않고 모든 이에게 널리 베풀고 나누는 것을 뜻합니다. 서도호 작가는 지난 30년간 뉴욕, 런던, 베를린 등 타국을 떠돌며 일군 예술적 결실을 고국의 관객들과 온전히 나누겠다는 약속을 이번 전시를 통해 건네고 있습니다.
+                </p>
+            </div>
+
+            <!-- 3 Core Pillars -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-stone-50 border border-stone-200 p-5 rounded-xl">
+                    <div class="text-2xl mb-2">🧳</div>
+                    <h3 class="font-bold text-stone-800 mb-1">1. 휴대하는 건축 (Portable)</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">낯선 이국땅에서 느낀 지독한 외로움에서 시작되어, 얇고 가벼운 천으로 어디로든 가져갈 수 있게 만든 반투명 집입니다.</p>
+                </div>
+                <div class="bg-stone-50 border border-stone-200 p-5 rounded-xl">
+                    <div class="text-2xl mb-2">✏️</div>
+                    <h3 class="font-bold text-stone-800 mb-1">2. 피부와 손때의 애도 (Rubbing)</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">한지를 옛집 벽면에 대고 연필로 수만 번 문질러, 손때와 나뭇결의 온기를 허물 벗겨내듯 채집한 촉각적 사랑의 기록입니다.</p>
+                </div>
+                <div class="bg-stone-50 border border-stone-200 p-5 rounded-xl">
+                    <div class="text-2xl mb-2">🧥</div>
+                    <h3 class="font-bold text-stone-800 mb-1">3. 가족의 포옹으로의 귀환 (Family)</h3>
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">거대한 도시와 아파트를 짓던 작가가 마침내 부모와 두 딸의 옷 주머니를 덧댄 '코트'로 돌아와 가족의 체온을 노래합니다.</p>
+                </div>
+            </div>
+
+            <!-- Radar Chart Container -->
+            <div class="bg-amber-50/60 border border-amber-200 p-6 rounded-xl">
+                <h3 class="text-base font-bold text-amber-900 mb-2 flex items-center gap-2">
+                    <span>💡</span> 서도호 예술 세계를 이루는 5가지 핵심 지표
+                </h3>
+                <p class="text-xs sm:text-sm text-amber-800 mb-4">
+                    전시를 감상하실 때 아래 다섯 가지 테마가 작품 곳곳에 어떻게 배어 있는지 관찰해 보세요.
+                </p>
+                <div class="chart-container">
+                    <canvas id="themeRadarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 2: Artist Journey & 4 Philosophies -->
+    <section id="content-story" class="hidden space-y-8">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200">
+            <h2 class="text-xl sm:text-2xl font-bold text-stone-800 mb-4 flex items-center gap-2">
+                <span>👨‍🎨</span> 서도호 이야기: 한옥 소년에서 세계적 예술 유목민으로
+            </h2>
+            <p class="text-stone-700 leading-relaxed mb-6">
+                서도호 작가(1962년생)의 독창적인 공간 감각은 어떻게 탄생했을까요? 그의 인생 궤적과 이를 지탱하는 4가지 사유 철학을 알면 작품이 훨씬 친근하게 다가옵니다.
+            </p>
+
+            <!-- 4 Philosophies Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div class="bg-amber-50/50 border border-amber-200 p-4 rounded-xl">
+                    <h4 class="font-bold text-amber-900 text-sm mb-1">① 휴대 가능한 건축 (Portable Architecture)</h4>
+                    <p class="text-xs text-stone-600 leading-relaxed">무거운 콘크리트 건물을 트렁크에 접어 넣을 수 있는 천으로 재탄생시켜, '언제든 이주할 수 있는 현대인'의 삶을 대변합니다.</p>
+                </div>
+                <div class="bg-blue-50/50 border border-blue-200 p-4 rounded-xl">
+                    <h4 class="font-bold text-blue-900 text-sm mb-1">② 건너가는 자리 '전이 공간' (Liminal Space)</h4>
+                    <p class="text-xs text-stone-600 leading-relaxed">안방이나 거실보다 문, 복도, 계단에 주목합니다. 이곳은 과거와 현재, 동양과 서양, 나와 타자가 부드럽게 마주치는 완충 지대입니다.</p>
+                </div>
+                <div class="bg-emerald-50/50 border border-emerald-200 p-4 rounded-xl">
+                    <h4 class="font-bold text-emerald-900 text-sm mb-1">③ 나와 우리의 변증법 (군복무 & 소수자 경험)</h4>
+                    <p class="text-xs text-stone-600 leading-relaxed">한국에서의 군복무와 미국에서의 아시아계 소수자 경험을 통해, 거대한 집단 속에서 개인이 겪는 억압과 동시에 미약한 개체들이 뭉쳐 이루는 연대의 힘을 표현합니다.</p>
+                </div>
+                <div class="bg-rose-50/50 border border-rose-200 p-4 rounded-xl">
+                    <h4 class="font-bold text-rose-900 text-sm mb-1">④ 몸을 감싸는 동심원의 껍질 (신체-옷-집)</h4>
+                    <p class="text-xs text-stone-600 leading-relaxed">몸에 가장 바짝 붙은 첫 번째 껍질이 '옷'이고, 몸을 둘러싼 확장된 두 번째 옷이 곧 '집'입니다. 그래서 작가는 집을 짓기 위해 바느질을 합니다.</p>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative border-l-2 border-stone-300 ml-4 pl-6 space-y-8 my-6">
+                <!-- Timeline Item 1 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-stone-700 border-4 border-white"></div>
+                    <span class="text-xs font-bold text-stone-500 uppercase tracking-wider">유년 시절 (서울 성북동)</span>
+                    <h3 class="text-lg font-bold text-stone-800">궁궐을 닮은 한옥 '무송재'에서의 성장</h3>
+                    <p class="text-sm text-stone-600 mt-1 leading-relaxed">
+                        한국 수묵추상의 거장 서세옥(1929~2020) 화백의 아들로 태어났습니다. 아버지가 창덕궁 연경당 사랑채를 본떠 지은 성북동 한옥에서 자라며, 창호지를 통과하는 햇살과 안팎의 경계가 열려 있는 한옥의 공간감을 몸으로 자연스레 익혔습니다.
+                    </p>
+                </div>
+                <!-- Timeline Item 2 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-amber-600 border-4 border-white"></div>
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">미국 유학 (1990년대 초)</span>
+                    <h3 class="text-lg font-bold text-stone-800">줄자로 방을 재며 시작된 "가방에 넣는 집"</h3>
+                    <p class="text-sm text-stone-600 mt-1 leading-relaxed">
+                        서울대 동양화과를 마친 뒤 미국 로드아일랜드 디자인스쿨(RISD)과 예일대로 건너갔습니다. 낯선 콘크리트 아파트에서 심각한 공간적 단절과 외로움을 겪은 청년 서도호는, 불안을 달래기 위해 줄자로 방의 치수를 재기 시작했습니다. 이 강박적인 실측 행위가 "내 방을 옷처럼 천으로 만들어 접어 다닐 순 없을까?"라는 혁신적 조형 언어로 폭발했습니다.
+                    </p>
+                </div>
+                <!-- Timeline Item 3 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-emerald-600 border-4 border-white"></div>
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">세계적 활동기</span>
+                    <h3 class="text-lg font-bold text-stone-800">베니스 비엔날레 대표작가에서 세계적 유목민으로</h3>
+                    <p class="text-sm text-stone-600 mt-1 leading-relaxed">
+                        2001년 베니스 비엔날레 한국관 대표로 세계의 찬사를 받았으며, 뉴욕·런던·베를린 등을 오가며 거주했던 집들의 스위치와 손잡이를 한 땀 한 땀 바느질했습니다. 나아가 개인을 넘어 광주극장 사택 같은 역사적 공동체의 상처를 탁본으로 보듬었습니다.
+                    </p>
+                </div>
+                <!-- Timeline Item 4 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-rose-600 border-4 border-white"></div>
+                    <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">현재 & 미래 (부성애와 회향)</span>
+                    <h3 class="text-lg font-bold text-stone-800">두 아이의 아빠가 되어 깨달은 '가족의 온기'</h3>
+                    <p class="text-sm text-stone-600 mt-1 leading-relaxed">
+                        홀로 타국을 떠돌 때는 집이 차가운 사색의 대상이었지만, 두 딸을 낳아 기르며 '집은 가족의 온기가 채워지는 포옹'임을 깨달았습니다. 이번 전시는 거대한 건축에서 출발해 마침내 가족의 주머니가 달린 따뜻한 코트로 돌아오는 감동적인 여정입니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 3: Interactive Work Explorer (WITH 10 KEY WORKS) -->
+    <section id="content-works" class="hidden space-y-6">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-stone-800 flex items-center gap-2">
+                        <span>🖼️</span> 놓쳐선 안 될 주요 대표작 10선 가이드
+                    </h2>
+                    <p class="text-stone-600 text-xs sm:text-sm mt-1">작품별 숨겨진 일화와 동행인과 나눌 수 있는 관람 포인트가 정리되어 있습니다.</p>
+                </div>
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-1.5 bg-stone-100 p-1.5 rounded-xl border border-stone-200">
+                    <button onclick="filterWorks('all', this)" data-cat="all" class="work-filter active text-xs px-3 py-1.5 rounded-lg bg-stone-800 text-white font-medium">전체보기</button>
+                    <button onclick="filterWorks('fabric', this)" data-cat="fabric" class="work-filter text-xs px-3 py-1.5 rounded-lg text-stone-600 hover:bg-stone-200 font-medium">반투명 천 건축</button>
+                    <button onclick="filterWorks('rubbing', this)" data-cat="rubbing" class="work-filter text-xs px-3 py-1.5 rounded-lg text-stone-600 hover:bg-stone-200 font-medium">탁본 & 실드로잉</button>
+                    <button onclick="filterWorks('social', this)" data-cat="social" class="work-filter text-xs px-3 py-1.5 rounded-lg text-stone-600 hover:bg-stone-200 font-medium">개인 & 사회</button>
+                    <button onclick="filterWorks('family', this)" data-cat="family" class="work-filter text-xs px-3 py-1.5 rounded-lg text-stone-600 hover:bg-stone-200 font-medium">가족 & 기원</button>
+                </div>
+            </div>
+
+            <!-- Works Grid -->
+            <div id="works-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Dynamic Content Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 4: Recommended 6-Step Viewing Route -->
+    <section id="content-route" class="hidden space-y-8">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200">
+            <h2 class="text-xl sm:text-2xl font-bold text-stone-800 mb-2">🗺️ 추천 관람 동선 (기억의 씨앗에서 가족의 온기까지 6단계)</h2>
+            <p class="text-stone-600 text-xs sm:text-sm mb-6">전시장은 지하 1층 복도에서 시작해 3·4·5전시실을 거쳐 2층 스튜디오로 이어집니다. 이 순서대로 걸어야 작가의 생각이 어떻게 자라났는지 감동적으로 느낄 수 있습니다.</p>
+
+            <!-- Observation Tip Box -->
+            <div class="bg-stone-900 text-stone-100 p-4 sm:p-5 rounded-xl mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div>
+                    <span class="text-amber-400 font-bold text-xs uppercase block mb-1">🔍 관람 필수 꿀팁: 이중 시선법</span>
+                    <p class="text-xs sm:text-sm text-stone-200 leading-relaxed">
+                        천 작품은 먼저 <strong>3~5m 뒤로 물러서서</strong> 겹쳐진 빛과 실루엣을 보고, 그 다음 <strong>30cm 앞으로 다가가</strong> 스위치 볼트 바느질과 지퍼 결합선을 보세요!
+                    </p>
+                </div>
+                <span class="text-xs bg-stone-800 border border-stone-700 px-3 py-1.5 rounded-lg text-amber-300 whitespace-nowrap">👁️ 3m 뒤 ➔ 30cm 앞</span>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Step 1 -->
+                <div class="border border-stone-200 rounded-xl p-4 sm:p-5 bg-stone-50 flex flex-col md:flex-row gap-4 items-start">
+                    <div class="bg-stone-800 text-white font-bold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap">Step 1</div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-bold text-stone-800 text-base">지하 1층 복도: 시드 뱅크 (Seed Bank)</h3>
+                            <span class="text-xs text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-medium">기억의 씨앗</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                            전시장 입장 전 복도 구역입니다. 어릴 적 조각한 나무 동물, 대학 습작, 그리고 1994년 유학 초기 첫 번째 천 작업인 〈516호〉를 통해 30년 역사의 출발점을 만납니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="border border-stone-200 rounded-xl p-4 sm:p-5 bg-white flex flex-col md:flex-row gap-4 items-start shadow-sm">
+                    <div class="bg-stone-800 text-white font-bold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap">Step 2</div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-bold text-stone-800 text-base">지하 1층 3전시실: 〈작은 문〉 통과 & 실 드로잉 200여 점</h3>
+                            <span class="text-xs text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded font-medium">기억의 입구</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                            은은한 옥색 천 대문 〈작은 문〉을 통과하여 젖은 종이 펄프 속에 색실을 녹여 넣은 싱가포르 STPI 협업 실 드로잉 200여 점을 봅니다. 평면 종이가 3차원 공간으로 솟아나는 기법을 감상하세요.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="border border-stone-200 rounded-xl p-4 sm:p-5 bg-stone-50 flex flex-col md:flex-row gap-4 items-start">
+                    <div class="bg-stone-800 text-white font-bold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap">Step 3</div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-bold text-stone-800 text-base">지하 1층 4전시실: 〈러빙/러빙〉 성북동 집 vs 광주극장 사택</h3>
+                            <span class="text-xs text-blue-700 bg-blue-100 px-2 py-0.5 rounded font-medium">촉각적 애도</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                            닥종이를 벽에 붙이고 연필로 긁어낸 두 채의 집이 마주 봅니다. 개인적 기억인 아버지의 한옥(1년간 비바람을 맞으며 제작)과 시민들이 눈을 가리고 탁본한 공적 역사(광주극장)의 대비를 느껴보세요.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="border border-stone-200 rounded-xl p-4 sm:p-5 bg-white flex flex-col md:flex-row gap-4 items-start shadow-sm">
+                    <div class="bg-stone-800 text-white font-bold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap">Step 4</div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-bold text-stone-800 text-base">지하 1층 5전시실: 〈완벽한 집〉, 〈바닥〉, 〈Who Am We?〉</h3>
+                            <span class="text-xs text-purple-700 bg-purple-100 px-2 py-0.5 rounded font-medium">세계와 사회로 확장</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                            6개 도시 스위치가 겹쳐진 천 집과 15m 증명사진 벽지를 확인하고, 소형 인형들이 받치는 강화유리판 〈바닥〉 위를 <strong>덧신을 신고 직접 걸어봅니다.</strong> 내 발아래 실리는 수천 명의 무게를 체감하세요.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="border border-stone-200 rounded-xl p-4 sm:p-5 bg-stone-50 flex flex-col md:flex-row gap-4 items-start">
+                    <div class="bg-stone-800 text-white font-bold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap">Step 5</div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-bold text-stone-800 text-base">지하 1층 중앙 공용공간: 22m 대형 천 터널 〈둥지/들〉</h3>
+                            <span class="text-xs text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded font-medium">가상의 통로 걷기</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                            서로 다른 4개 도시의 복도 10곳을 일렬로 연결한 22m 길이의 천 터널 내부를 통과합니다. <strong>(주의: 섬세한 천이 긁히지 않도록 가방을 몸 앞으로 안아주세요!)</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="border border-amber-300 rounded-xl p-4 sm:p-5 bg-amber-50/70 flex flex-col md:flex-row gap-4 items-start">
+                    <div class="bg-amber-700 text-white font-bold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap">Step 6</div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-bold text-amber-900 text-base">지상 2층 MMCA 스튜디오: 〈사랑의 기억〉 (래코드 협업)</h3>
+                            <span class="text-xs text-rose-700 bg-rose-100 px-2 py-0.5 rounded font-medium">가족의 온기로 귀환</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                            2층으로 이동하여 가족들의 옷 주머니가 안감에 촘촘히 덧대어진 울 코트를 감상합니다. 거대했던 건축이 한 벌의 옷이자 가족의 포옹으로 작아지는 감동적인 피날레입니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Special Season Step: Seoul Box -->
+                <div class="border-2 border-dashed border-stone-400 rounded-xl p-4 sm:p-5 bg-stone-100/80 flex flex-col md:flex-row gap-4 items-start">
+                    <div class="bg-stone-600 text-white font-bold text-sm px-3 py-1.5 rounded-lg whitespace-nowrap">12/18 이후 스페셜</div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="font-bold text-stone-800 text-base">지하 1층 서울박스: LACMA 소장 〈뉴욕 아파트 복도와 계단〉</h3>
+                            <span class="text-xs text-stone-600 bg-stone-200 px-2 py-0.5 rounded font-medium">수직 천 건축</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                            2026년 12월 18일부터 결합 설치되는 미국 LA카운티미술관(LACMA) 소장 명작! 붉은색 반투명 천으로 3층 높이의 계단과 복도를 허공에 매달아놓은 장관을 감상할 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 5: Deep Conversation Points & Random Roulette -->
+    <section id="content-tips" class="hidden space-y-8">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200">
+            <h2 class="text-xl sm:text-2xl font-bold text-stone-800 mb-2 flex items-center gap-2">
+                <span>💬</span> 지인들과 나눌 4대 심화 대화 주제
+            </h2>
+            <p class="text-stone-600 text-xs sm:text-sm mb-6">어려운 미술 평론 대신, 커피 한 잔 마시며 지인들과 서로의 삶에 대해 나눌 수 있는 좋은 질문들입니다.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="p-5 border border-stone-200 rounded-xl bg-stone-50">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-lg">🏡</span>
+                        <h4 class="font-bold text-stone-800 text-sm">1. "부동산 자산인가, 아니면 기억의 보자기인가?"</h4>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        우리는 집을 평당 가격과 투자 가치로만 바라보곤 합니다. 서도호 작가처럼 가방에 접어 넣을 수 있는 '기억의 집'이 있다면, 여러분에게 진짜 안식처가 되는 집은 어디인가요?
+                    </p>
+                </div>
+                <div class="p-5 border border-stone-200 rounded-xl bg-stone-50">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-lg">👥</span>
+                        <h4 class="font-bold text-stone-800 text-sm">2. "유리판 밑의 군중: 지탱하는 자인가, 짓눌린 자인가?"</h4>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        〈바닥〉 작품 위를 걸을 때 어떤 감정이 드셨나요? 묵묵히 사회를 함께 떠받치는 '연대의 주체'로 느껴지셨나요, 아니면 거대한 체제에 짓눌려 얼굴을 잃어버린 작은 부속품처럼 느껴지셨나요?
+                    </p>
+                </div>
+                <div class="p-5 border border-stone-200 rounded-xl bg-stone-50">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-lg">🪟</span>
+                        <h4 class="font-bold text-stone-800 text-sm">3. "천 너머의 낯선 그림자: 침범인가 위안인가?"</h4>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        천 집 안에 서 있을 때 바깥 사람들의 실루엣이 비칩니다. 일반 벽처럼 나를 완벽히 숨겨주지 못하는 투명한 공간에서, 낯선 타인의 존재가 방해로 느껴졌나요, 아니면 느슨한 따뜻함으로 다가왔나요?
+                    </p>
+                </div>
+                <div class="p-5 border border-stone-200 rounded-xl bg-stone-50">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-lg">⏳</span>
+                        <h4 class="font-bold text-stone-800 text-sm">4. "스마트폰 찰칵 vs 1년간 손으로 문지른 탁본"</h4>
+                    </div>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        디지털 렌즈로 1초 만에 캡처하는 현대 사회에서, 1년 동안 비바람을 맞으며 연필로 집 전체를 문지른 〈러빙/러빙〉의 신체 노동은 어떤 의미일까요? 대상을 진정으로 사랑하고 애도한다는 건 어떤 수고로움일까요?
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactive Quiz / Question Starter Generator -->
+            <div class="bg-stone-900 text-white p-6 sm:p-8 rounded-2xl text-center space-y-4 shadow-md">
+                <span class="inline-block bg-amber-500 text-stone-900 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">현장 대화 카드 룰렛</span>
+                <h3 class="text-lg sm:text-xl font-bold">동행인에게 물어볼 즉석 질문 뽑기</h3>
+                <div id="quiz-box" class="bg-stone-800 p-6 rounded-xl text-stone-200 text-sm sm:text-base min-h-[90px] flex items-center justify-center font-medium leading-relaxed border border-stone-700">
+                    아래 버튼을 눌러 전시장에서 바로 나눌 흥미진진한 질문 카드를 무작위로 뽑아보세요!
+                </div>
+                <button onclick="generateQuestion()" class="bg-amber-600 hover:bg-amber-500 text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-xl transition-all shadow-lg active:scale-95">
+                    🎲 새 질문 카드 뽑기
+                </button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-stone-200 border-t border-stone-300 py-6 text-center text-xs text-stone-600">
+    <div class="max-w-5xl mx-auto px-4 space-y-1">
+        <p class="font-semibold text-stone-700">국립현대미술관 서울 《서도호》 개인전 관람 가이드 (2026.08.27~2027.02.09)</p>
+        <p>기억의 건축학 · 포터블 아키텍처 · 박보검 오디오 가이드 · 일반 관람객용 쉬운 해설집</p>
+    </div>
+</footer>
+
+<!-- Non-intrusive Toast Notification Container (No alert() used) -->
+<div id="toast-msg" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-stone-900 text-white text-xs sm:text-sm px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 pointer-events-none border border-stone-700">
+    <span id="toast-icon">✨</span>
+    <span id="toast-text">알림 메시지</span>
+</div>
+
+<!-- JavaScript Logic -->
+<script>
+    // Data Structure for 10 Key Works with Deep Research Details
+    const worksData = [
+        {
+            id: 'seed_516',
+            category: 'family',
+            title: '〈516호〉 (1994~1995)',
+            location: '지하 1층 복도 (시드 뱅크)',
+            material: '옥양목, 지퍼, 스테인리스 와이어',
+            image: './images/01.jpg',
+            imageTag: '서도호 최초의 천 작업',
+            desc: '미국 로드아일랜드 유학 초기, 지독한 외로움 속에서 자신의 작은 아파트 방(516호)을 줄자로 재서 처음으로 천과 지퍼로 꿰매 만든 역사적 시원작입니다.',
+            point: '이 작은 천 방 하나가 오늘날 전 세계를 놀라게 한 "휴대용 건축" 30년 역사의 맨 첫 씨앗입니다.'
+        },
+        {
+            id: 'gate',
+            category: 'fabric',
+            title: '〈작은 문, 서울 성북구 성북동 260-10〉 (2017)',
+            location: '지하 1층 3전시실 입구',
+            material: '은은한 옥색 반투명 천, 손바느질',
+            image: './images/02.jpg',
+            imageTag: '옥색 반투명 성북동 한옥 대문',
+            desc: '작가가 유년 시절 살았던 성북동 한옥 대문을 1:1 실물 크기로 은은한 옥색 천에 꿰매어 천장에 매달았습니다. 문이지만 벽처럼 막지 않고 바람과 시선이 통합니다.',
+            point: '안과 밖, 과거의 한국과 현재의 세계를 부드럽게 이어주는 "전이 공간"의 문턱을 통과해 보세요.'
+        },
+        {
+            id: 'thread',
+            category: 'rubbing',
+            title: 'STPI 싱가포르 실 드로잉 연작 (2000년대~)',
+            location: '지하 1층 3전시실 내부',
+            material: '수제 종이 펄프, 젤라틴 티슈, 색실',
+            image: './images/03.jpg',
+            imageTag: '종이 펄프 속에 매립된 색실',
+            desc: '싱가포르 판화공방 STPI와 협업해 개발한 독창적 기법. 젤라틴 티슈 위에 실로 모양을 짠 뒤 젖은 종이 반죽에 넣고 고압 압착해 건조시킵니다. 젤라틴은 녹아 사라지고 실만 종이 피부에 남습니다.',
+            point: '평평한 2차원 종이 그림 속에 사람의 신경망과 3차원 입체 공간이 숨 쉬고 있는 부조 질감을 가까이서 보세요.'
+        },
+        {
+            id: 'rubbing_seoul',
+            category: 'rubbing',
+            title: '〈러빙/러빙: 서울 집〉 (2013~2022)',
+            location: '지하 1층 4전시실',
+            material: '전통 닥지(한지), 흑연, 스테인리스 철사, LED (534×866×802cm)',
+            image: './images/04.jpg',
+            imageTag: '1년간 비바람 맞으며 뜬 한옥 탁본',
+            desc: '성북동 한옥 벽면에 종이를 붙이고 연필로 1년 내내 문질러 나뭇결과 손때를 뜬 뒤 다시 실물 크기 집으로 세웠습니다. 종이를 뗄 때 나는 소리가 허물을 벗겨내는 듯했다고 합니다.',
+            point: '단순한 전통 가옥 탁본이 아니라, 부친 서세옥 화백의 예술적 시간과 자신의 성장이 겹쳐진 "아버지와 나의 이중 자화상"입니다.'
+        },
+        {
+            id: 'rubbing_gwangju',
+            category: 'rubbing',
+            title: '〈Rubbing/Loving Project: 광주극장 사택〉 (2012)',
+            location: '지하 1층 4전시실',
+            material: '닥종이, 흑연, 색연필, 시민 참여 집단 탁본',
+            image: './images/05.jpg',
+            imageTag: '시민들이 눈을 가리고 뜬 근대유산 탁본',
+            desc: '사라져가는 근대 문화유산인 광주극장 사택을 다수의 시민 참여자들이 안대로 눈을 가린 채 손끝의 촉각에만 의존하여 연필로 문질러 기록한 공동체 작업입니다.',
+            point: '개인의 추억(성북동 집)이 도시의 아픈 역사와 집단적 연대로 확장되는 따뜻한 애도의 과정을 확인해 보세요.'
+        },
+        {
+            id: 'perfect_home',
+            category: 'fabric',
+            title: '〈완벽한 집〉 (2024)',
+            location: '지하 1층 5전시실',
+            material: '반투명 폴리에스터 천, 스틸 와이어 (455×1237×575cm)',
+            image: './images/06.jpg',
+            imageTag: '6개 도시 스위치가 한곳에 모인 집',
+            desc: '작가의 런던 집 골조 안에 서울, 프로비던스, 뉴욕, 베를린, 호셤 등 과거 살았던 6개 도시 거주지의 전기 스위치, 문손잡이, 수도꼭지 등을 실측 위치 그대로 추출해 겹쳐놓은 "건축적 자서전"입니다.',
+            point: '비하인드: 서울, 뉴욕, 런던의 물리적 중심점을 찍어보니 북극점 인근이 나와 "결국 우주에나 쏘아 올려야 완성되는 불가능한 집"이라고 작가가 고백했습니다!'
+        },
+        {
+            id: 'nests',
+            category: 'fabric',
+            title: '〈둥지/들〉 (2024)',
+            location: '지하 1층 5전시실 출구 중앙통로',
+            material: '반투명 천, 스틸 구조 (길이 22m 대형 복도)',
+            image: './images/07.jpg',
+            imageTag: '22m 연분홍/파스텔톤 천 복도 터널',
+            desc: '서로 다른 도시들에서 살았던 집들의 현관, 복도, 계단 등 "통로 공간" 10곳을 일렬로 이어 붙인 22m 길이의 천 터널입니다.',
+            point: '터널 안을 직접 걸어보세요. 반투명한 벽 너머로 앞서 걷는 사람들의 실루엣이 겹쳐지며, 현실에 없는 가상의 도시를 여행하는 기분을 줍니다.'
+        },
+        {
+            id: 'floor',
+            category: 'social',
+            title: '〈바닥 (Floor)〉 (1997~2000)',
+            location: '지하 1층 5전시실',
+            material: '수만 개 초소형 플라스틱 인형상, 강화유리',
+            image: './images/08.jpg',
+            imageTag: '수만 명의 인형이 받치는 강화유리',
+            desc: '두 팔을 번쩍 든 수만 개의 조그만 인형들이 투명 강화유리를 일제히 떠받치고 있으며, 관람객은 덧신을 신고 그 유리 위를 직접 밟고 걸어갑니다.',
+            point: '내가 디디고 선 안락한 사회적 평화가, 실은 이름 없는 무수한 타인들의 보이지 않는 희생과 연대 위에 세워졌음을 신체로 느껴보세요.'
+        },
+        {
+            id: 'who_am_we',
+            category: 'social',
+            title: '〈Who Am We?〉 (2000)',
+            location: '지하 1층 5전시실 벽면',
+            material: '축소 인쇄된 고교 졸업사진 벽지 (높이 15m 벽면)',
+            image: './images/09.jpg',
+            imageTag: '15m 벽면을 채운 미세한 졸업사진들',
+            desc: '작가의 고교 졸업앨범 속 증명사진 수만 장을 깨알처럼 작게 축소 인쇄해 도배한 벽지입니다. 멀리서 보면 현대적인 도트 패턴이지만 다가가면 빡빡 깎은 머리의 소년들 얼굴이 드러납니다.',
+            point: '제목의 영문법 파괴(We + Am): "우리는 하나"라는 전체주의적 규율 속에서 개개인의 고유한 얼굴과 주체성은 어디로 사라졌는지 묻습니다.'
+        },
+        {
+            id: 'memories_love',
+            category: 'family',
+            title: '〈사랑의 기억〉 (2026)',
+            location: '지상 2층 MMCA 스튜디오',
+            material: '업사이클링 울 코트(래코드 협업), 가족 옷 주머니, 수집된 애착 사물',
+            image: './images/10.jpg',
+            imageTag: '가족들의 옛 옷 주머니가 달린 코트',
+            desc: '작가가 오래 입었던 코트 안감에 부모님, 아내, 두 딸의 옷에서 떼어낸 주머니들을 덧대고 그 안에 가족의 온기가 담긴 물건들을 넣은 신작입니다.',
+            point: '옷이야말로 몸에 가장 바짝 닿는 "가장 작은 집"입니다. 거대한 건축을 짓던 작가가 두 딸의 아버지가 되어 가족의 따뜻한 품으로 돌아온 피날레!'
+        }
+    ];
+
+    // Deep Discussion Roulette Questions
+    const randomQuestions = [
+        "💬 서도호 작가는 '집은 가방에 넣어 다닐 수 있는 옷과 같다'고 했습니다. 만약 평생 딱 하나의 방만 가방에 넣어 다닐 수 있다면, 당신은 어떤 방을 챙기시겠습니까?",
+        "🔍 〈완벽한 집〉의 스위치와 손잡이 바느질을 보셨나요? 당신의 집에서 매일 무심코 손으로 만지는 가장 소중한 일상의 물건은 무엇인가요?",
+        "🚶‍♂️ 22m 길이의 천 터널 〈둥지/들〉을 통과할 때 기분이 어떠셨나요? 과거에 거쳐온 집들 사이를 시공간 이동하는 느낌이 들었나요?",
+        "👣 〈바닥〉 작품 위를 걸을 때 밑을 보셨나요? 내가 딛고 선 평화가 보이지 않는 수많은 사람들의 연대 위에 있다는 설명에 공감하시나요?",
+        "🧥 2층 〈사랑의 기억〉 코트 안감 주머니를 보며, 여러분이라면 가족이나 소중한 사람의 어떤 물건을 코트 안주머니에 품고 다니고 싶으신가요?",
+        "✏️ 1년 동안 비바람 맞으며 연필로 집을 문지른 〈러빙/러빙〉을 보며, 여러분에게 시간과 정성을 다해 기억하고 싶은 소중한 장소는 어디인가요?",
+        "👥 〈Who Am We?〉 벽지 앞에서 '나(Am)'와 '우리(We)' 사이에서 갈등했던 학교나 직장에서의 기억이 떠오르셨나요?"
+    ];
+
+    // Render Works Cards with Visual Artwork Image Headers
+    function renderWorks(items) {
+        const grid = document.getElementById('works-grid');
+        grid.innerHTML = '';
+        items.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all duration-200";
+            card.innerHTML = `
+                <div>
+                    <!-- Visual Artwork Image Header -->
+                    <div class="relative w-full h-52 bg-stone-300 overflow-hidden group">
+                        <img id="img-${item.id}" src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none'; const fb = this.nextElementSibling; if(fb){ fb.classList.remove('hidden'); fb.classList.add('flex'); }">
+                        <div class="hidden w-full h-full absolute inset-0 items-center justify-center bg-stone-200 text-stone-600 text-xs font-semibold p-4 text-center">
+                            🎨 ${item.title} 작품 대표 이미지
+                        </div>
+                        
+                        <!-- Badges in top left -->
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                            <span class="bg-stone-900/80 text-white text-[11px] px-2.5 py-1 rounded-md backdrop-blur-sm font-medium">
+                                ${item.imageTag}
+                            </span>
+                        </div>
+
+                        <!-- Location Tag in bottom right -->
+                        <div class="absolute bottom-3 right-3 bg-white/90 text-stone-800 text-[11px] px-2.5 py-1 rounded-md shadow-sm font-semibold z-10">
+                            📍 ${item.location}
+                        </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="p-5 space-y-3">
+                        <h3 class="font-bold text-stone-800 text-base sm:text-lg leading-snug">${item.title}</h3>
+                        <p class="text-xs text-stone-500 font-medium flex items-center gap-1">
+                            <span>🛠️ 매체/재료:</span> ${item.material}
+                        </p>
+                        <p class="text-xs sm:text-sm text-stone-700 leading-relaxed">${item.desc}</p>
+                    </div>
+                </div>
+
+                <!-- Footer Conversation Point -->
+                <div class="p-5 pt-0">
+                    <div class="bg-amber-50 border border-amber-200/80 p-3.5 rounded-xl text-xs text-amber-900 leading-relaxed">
+                        <span class="font-bold block mb-1 flex items-center gap-1 text-amber-950">
+                            <span>👁️</span> 관람 포인트 & 핵심 사유:
+                        </span>
+                        ${item.point}
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // Filter Logic
+    function filterWorks(category, btnElement) {
+        const buttons = document.querySelectorAll('.work-filter');
+        buttons.forEach(btn => {
+            btn.classList.remove('bg-stone-800', 'text-white');
+            btn.classList.add('text-stone-600', 'hover:bg-stone-200');
+        });
+        if (btnElement) {
+            btnElement.classList.remove('text-stone-600', 'hover:bg-stone-200');
+            btnElement.classList.add('bg-stone-800', 'text-white');
+        }
+
+        if (category === 'all') {
+            renderWorks(worksData);
+        } else {
+            const filtered = worksData.filter(w => w.category === category);
+            renderWorks(filtered);
+        }
+    }
+
+    // Switch Main Navigation Tabs
+    function switchTab(tabId) {
+        const tabs = ['theme', 'story', 'works', 'route', 'tips'];
+        tabs.forEach(t => {
+            document.getElementById(`content-${t}`).classList.add('hidden');
+            document.getElementById(`tab-${t}`).classList.remove('active');
+        });
+        document.getElementById(`content-${tabId}`).classList.remove('hidden');
+        document.getElementById(`tab-${tabId}`).classList.add('active');
+    }
+
+    // Random Question Generator
+    function generateQuestion() {
+        const box = document.getElementById('quiz-box');
+        const randomIndex = Math.floor(Math.random() * randomQuestions.length);
+        box.style.opacity = '0.3';
+        setTimeout(() => {
+            box.innerText = randomQuestions[randomIndex];
+            box.style.opacity = '1';
+        }, 150);
+    }
+
+    // Initialize Chart.js Radar Chart
+    function initRadarChart() {
+        const ctx = document.getElementById('themeRadarChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['휴대 가능한 건축 (이동성)', '시간과 장소의 촉각적 애도', '전이 공간 (문·복도·계단)', '사회적 연대와 주체성', '가족의 온기 (부성애·회향)'],
+                datasets: [{
+                    label: '서도호 예술 세계 핵심 지표',
+                    data: [98, 92, 95, 88, 96],
+                    backgroundColor: 'rgba(107, 142, 35, 0.25)',
+                    borderColor: '#6B8E23',
+                    pointBackgroundColor: '#C87D61',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#C87D61',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: '#E2E8F0' },
+                        grid: { color: '#E2E8F0' },
+                        pointLabels: {
+                            font: { size: 12, family: 'Pretendard' },
+                            color: '#475569'
+                        },
+                        ticks: { display: false, max: 100 }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+
+    // On Window Load
+    window.addEventListener('DOMContentLoaded', () => {
+        renderWorks(worksData);
+        initRadarChart();
+    });
+</script>
+</body>
+</html>
